@@ -35,8 +35,8 @@ yarn start
 
 ### Regras de negócio
 
-- [] Não deve ser possível cadastrar uma conta com CPF já eístente
-- [] Não deve ser possível buscar extrato em uma conta não eístente
+- [x] Não deve ser possível cadastrar uma conta com CPF já exístente
+- [] Não deve ser possível buscar extrato em uma conta não exístente
 - [] Não deve ser possível fazer depósito em uma conta não exístente
 - [] Não deve ser possível fazer saque em uma conta não exístente
 - [] Não deve ser possível fazer saque quando o saldo for insuficiente
