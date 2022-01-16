@@ -1,31 +1,22 @@
-## FinApi - Financeira
+## FinApi - Financial
 
-Api desenvolvida durante as aulas do primeiro capitulo do curso Ignite NodeJS.
-
-Durante o desenvolvimento colocamos em pratica conceitos básicos de **HTTP**, **Middleware** e **Express**.
+ **HTTP**, **Middleware** e **Express**.
 
 ---
 
-### Como rodar o Projeto
-```bash
-    # Clonar o repositório
-    $ git clone https://github.com/jorge-lba/FinApi
-    # Entrar no diretório
-    $ cd FinApi
-    # Instalar as dependências
-    $ yarn install
-    # Iniciar o projeto
-    $ yarn start
+### How to run the Project
+
+* Clone the repository
 ```
-
-### Testes
-Originalmente o desenvolvimento feito nesse módulo não possuia testes, então implementei os testes com cobertura de 100% das respostas desenvolvidas.
-
-```bash
-    # Rodar Testes
-    $ yarn test
-    # Rodar Testes com Tabela de cobertura
-    $ yarn jest --collect-coverage
+git clone https://github.com/jorge-lba/FinApi
+```
+* installing the dependencies
+```
+yarn install
+```
+* Run project
+```
+yarn start
 ```
 
 ### Requisitos
