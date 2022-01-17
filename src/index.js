@@ -98,7 +98,21 @@ app.post("/withdraw", verifyIfExistsAccountCPF, (request, response) => {
     }
 
     customer.statement.push(statementOperation)
-    return response.status(201).json({"success": "account withdrawal completed"})
+    return response.status(201).json({"success": "account withdrawal completed"}).send()
+})
+
+app.get("/statement/date", verifyIfExistsAccountCPF, (request, response) => {
+
+    const { customer } = request
+    const { date } = request.query
+    
+    const dateFormat = new Date( date + " 00:00")
+
+    const statement = customer.statement.filter((statement) => statement.created_at.toDateString() === new Date(dateFormat).toDateString())
+
+    return response.status(200).json({
+        "extrato": statement
+    })
 })
 
 app.listen(3001)
