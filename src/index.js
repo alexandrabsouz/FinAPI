@@ -21,9 +21,20 @@ function verifyIfExistsAccountCPF(request, response, next){
     return next()
 }
 
+function getBalance(statement){
+    const balance = statement.reduce((acc, operation) => {
+        if(operation.type === "credit"){
+            return acc + operation.amount
+        } else {
+            return acc - operation.amount
+        }
+    }, 0)
+    return balance
+}
+
 app.post("/account", (request, response) => {
     const {cpf, name} = request.body
-    const customerAlreadyExists = customers.some((customer) => customer.cpf == cpf)
+    const customerAlreadyExists = customers.some((customer) => customer.cpf === cpf)
 
     if(customerAlreadyExists){
         return response.status(400).json({
@@ -40,7 +51,6 @@ app.post("/account", (request, response) => {
 
     return response.status(201).send()
 })
-
 
 //app.use(verifyIfExistsAccountCPF)
 app.get("/statement", verifyIfExistsAccountCPF, (request, response) => {
@@ -63,7 +73,7 @@ app.post("/deposit", verifyIfExistsAccountCPF, (request, response) => {
     }
 
     const { customer } = request
-    
+
     customer.statement.push(statementOperation)
 
     return response.status(201).json({
@@ -71,4 +81,24 @@ app.post("/deposit", verifyIfExistsAccountCPF, (request, response) => {
     })
 })
 
-app.listen(3000)
+app.post("/withdraw", verifyIfExistsAccountCPF, (request, response) => {
+    const { amount } = request.body
+    const { customer } = request
+
+    const balance = getBalance(customer.statement)
+
+    if(balance < amount){
+        return response.status(400).json({error: "there is no account balance."})
+    }
+
+    const statementOperation = {
+        amount,
+        created_at: new Date(),
+        type: "debit"
+    }
+
+    customer.statement.push(statementOperation)
+    return response.status(201).json({"success": "account withdrawal completed"})
+})
+
+app.listen(3001)
