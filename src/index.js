@@ -1,3 +1,4 @@
+const { request } = require("express")
 const express = require("express")
 const {v4: uuidv4} = require("uuid")
 
@@ -113,6 +114,20 @@ app.get("/statement/date", verifyIfExistsAccountCPF, (request, response) => {
     return response.status(200).json({
         "extrato": statement
     })
+})
+
+
+app.put("/account", verifyIfExistsAccountCPF, (request, response) => {
+    const { name } = request.body
+    const { customer } = request
+
+    customer.name = name
+
+    return response.status(201).json({
+        "success": "name changed successfully",
+        "person": {"name": customer.name}
+    })
+
 })
 
 app.listen(3001)
