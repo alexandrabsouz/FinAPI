@@ -130,4 +130,22 @@ app.put("/account", verifyIfExistsAccountCPF, (request, response) => {
 
 })
 
+app.delete("/account", verifyIfExistsAccountCPF, (request, response) => {
+    const { customer } = request
+    customers.splice(customer, 1)
+
+    return response.status(200).json({"success": "account deleted"})
+})
+
+
+app.get("/balance", verifyIfExistsAccountCPF, (request, response) => {
+    const { customer } = request
+
+    const balance = getBalance(customer.statement)
+
+    return response.status(200).json({
+        "balance": balance
+    })
+})
+
 app.listen(3001)
