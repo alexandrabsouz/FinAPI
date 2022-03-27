@@ -19,25 +19,25 @@ yarn install
 yarn start
 ```
 
-### Requisitos
+### Requirements
 
-- [x] Deve ser possível criar uma conta
-- [x] Deve ser possível buscar o extrato bancário do cliente
-- [x] Deve ser possível realizar um depósito
-- [x] Deve ser possível realizar um saque
-- [x] Deve ser possível buscar o etrato bancário do cliente por data
-- [x] Deve ser possível atualizar dados da conta do cliente
-- [x] Deve ser possível obter dados da conta do cliente
-- [x] Deve ser possível deletar uma conta
-- [x] Deve ser possível retornar o balanço
+- [x] It must be possible to create an account
+- [x] It must be possible to fetch the customer's bank statement
+- [x] It must be possible to make a deposit
+- [x] It must be possible to make a withdrawal
+- [x] It must be possible to search for the customer's bank statement by date
+- [x] It must be possible to update customer account data
+- [x] It must be possible to get customer account data
+- [x] It must be possible to delete an account
+- [x] It must be possible to return the balance
 
 ---
 
-### Regras de negócio
+### Business rules
 
-- [x] Não deve ser possível cadastrar uma conta com CPF já exístente
-- [x] Não deve ser possível buscar extrato em uma conta não exístente
-- [x] Não deve ser possível fazer depósito em uma conta não exístente
-- [x] Não deve ser possível fazer saque em uma conta não exístente
-- [x] Não deve ser possível fazer saque quando o saldo for insuficiente
-- [x] Não deve ser possível excluir uma conta não exístente
+- [x] It should not be possible to register an account with an existing CPF
+- [x] It should not be possible to fetch a statement from a non-existing account
+- [x] It should not be possible to deposit to a non-existing account
+- [x] It should not be possible to withdraw from a non-existing account
+- [x] It should not be possible to withdraw when the balance is insufficient
+- [x] It should not be possible to delete a non-existing account
